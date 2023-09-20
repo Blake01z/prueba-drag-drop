@@ -1,8 +1,8 @@
-import React from 'react'
+import { DropDownMain } from './dropdown-menu-styles';
 
 const DropdowmMenu = () => {
   return (
-    <div>DropdowmMenu</div>
+    <DropDownMain>DropdowmMenu</DropDownMain>
   )
 }
 
