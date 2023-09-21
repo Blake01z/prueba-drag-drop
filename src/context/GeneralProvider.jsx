@@ -52,6 +52,35 @@ const GeneralProvider = ({children}) => {
         }
     }
 
+    // Funcion para ordenar los arreglos 
+    const arrayOrder = (idCurrently,idDestination, type) => {
+        if(type === 'Images'){
+            const indexObjetoACambiar = images.findIndex(obj => obj.id === idCurrently);
+            const indexObjetoDestino = images.findIndex(obj => obj.id === idDestination);
+            const objetoMovido = images[indexObjetoACambiar];
+            const objetosActualizados = [...images];
+            objetosActualizados.splice(indexObjetoACambiar, 1);
+            objetosActualizados.splice(indexObjetoDestino, 0, objetoMovido);
+            setImages(objetosActualizados);
+        }else if(type === 'Any'){
+            const indexObjetoACambiar = any.findIndex(obj => obj.id === idCurrently);
+            const indexObjetoDestino = any.findIndex(obj => obj.id === idDestination);
+            const objetoMovido = any[indexObjetoACambiar];
+            const objetosActualizados = [...any];
+            objetosActualizados.splice(indexObjetoACambiar, 1);
+            objetosActualizados.splice(indexObjetoDestino, 0, objetoMovido);
+            setAny(objetosActualizados);
+        }else{
+            const indexObjetoACambiar = text.findIndex(obj => obj.id === idCurrently);
+            const indexObjetoDestino = text.findIndex(obj => obj.id === idDestination);
+            const objetoMovido = text[indexObjetoACambiar];
+            const objetosActualizados = [...text];
+            objetosActualizados.splice(indexObjetoACambiar, 1);
+            objetosActualizados.splice(indexObjetoDestino, 0, objetoMovido);
+            setText(objetosActualizados);
+        }
+    }
+
     // Funcion para obtener el elemento arrastrado del sidebar
     const onDropper = (e, area) => {
         const itemId = e.dataTransfer.getData('itemType')
@@ -69,13 +98,7 @@ const GeneralProvider = ({children}) => {
                     }, ...images])
                 }else if(itemId === 'Image' && from === 'Images'){
                     // Encuentra los índices de los objetos que deseas cambiar
-                    const indexObjetoACambiar = images.findIndex(obj => obj.id === idCurrently);
-                    const indexObjetoDestino = images.findIndex(obj => obj.id === idDestination);
-                    const objetoMovido = images[indexObjetoACambiar];
-                    const objetosActualizados = [...images];
-                    objetosActualizados.splice(indexObjetoACambiar, 1);
-                    objetosActualizados.splice(indexObjetoDestino, 0, objetoMovido);
-                    setImages(objetosActualizados);
+                    arrayOrder(idCurrently,idDestination, 'Images')
                 }else if(itemId === 'Image' && from === 'Any'){
                     // Encuentra el objeto en el primer arreglo con el ID dado
                     const objetoATransferir = any.find(objeto => objeto.id === idCurrently);
@@ -101,13 +124,7 @@ const GeneralProvider = ({children}) => {
                     },...any])
                 }else if(from === 'Any'){
                     // Encuentra los índices de los objetos que deseas cambiar
-                    const indexObjetoACambiar = any.findIndex(obj => obj.id === idCurrently);
-                    const indexObjetoDestino = any.findIndex(obj => obj.id === idDestination);
-                    const objetoMovido = any[indexObjetoACambiar];
-                    const objetosActualizados = [...any];
-                    objetosActualizados.splice(indexObjetoACambiar, 1);
-                    objetosActualizados.splice(indexObjetoDestino, 0, objetoMovido);
-                    setAny(objetosActualizados);
+                    arrayOrder(idCurrently,idDestination, 'Any')
                 }else if(from === 'Images'){
                     // Encuentra el objeto en el primer arreglo con el ID dado
                     const objetoATransferir = images.find(objeto => objeto.id === idCurrently);
@@ -133,13 +150,7 @@ const GeneralProvider = ({children}) => {
                     }, ...text])
                 }else if(from === 'Texto'){
                     // Encuentra los índices de los objetos que deseas cambiar
-                    const indexObjetoACambiar = text.findIndex(obj => obj.id === idCurrently);
-                    const indexObjetoDestino = text.findIndex(obj => obj.id === idDestination);
-                    const objetoMovido = text[indexObjetoACambiar];
-                    const objetosActualizados = [...text];
-                    objetosActualizados.splice(indexObjetoACambiar, 1);
-                    objetosActualizados.splice(indexObjetoDestino, 0, objetoMovido);
-                    setText(objetosActualizados);
+                    arrayOrder(idCurrently,idDestination, 'Texto')
                 }else{
                     return;
                 }
