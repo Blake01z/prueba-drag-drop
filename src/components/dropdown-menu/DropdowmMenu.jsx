@@ -4,16 +4,18 @@ import useGeneral from '../../hooks/useGeneral';
 import Text from '../../assets/icons/text2.svg'
 import Image from '../../assets/icons/image2.svg'
 import Table from '../../assets/icons/table2.svg'
+import DeleteIcon from '../../assets/icons/delete.svg';
 
 import { DropDownMain, 
         ContainerDragDown, 
         DragContainer, 
         Drag,
-        FileContent } from './dropdown-menu-styles';
+        FileContent,
+        ContainerIconDelete } from './dropdown-menu-styles';
 
 const DropdowmMenu = () => {
 
-  const { images, any, text, dragginOver, onDropper, startDrag } = useGeneral();
+  const { images, any, text, dragginOver, onDropper, startDrag, deleteItem } = useGeneral();
 
   return (
     <DropDownMain>
@@ -35,6 +37,13 @@ const DropdowmMenu = () => {
                   draggable
                   onDragStart={(e) => {startDrag(e,img, 'Images', img.id)}}
                 >
+                  <ContainerIconDelete>
+                    <img 
+                      src={DeleteIcon} 
+                      alt="Icon delete"
+                      onClick={() => deleteItem(img.id, 'Images')}
+                    />
+                  </ContainerIconDelete>
                   <img src={Image} alt={img.name} />
                   <p>{img.name} #{img.id}</p>
                 </FileContent>
@@ -58,6 +67,13 @@ const DropdowmMenu = () => {
                   draggable
                   onDragStart={(e) => {startDrag(e,doc, 'Any', doc.id)}}
                 >
+                  <ContainerIconDelete>
+                    <img 
+                      src={DeleteIcon} 
+                      alt="Icon delete"
+                      onClick={() => deleteItem(doc.id, 'Any')}
+                    />
+                  </ContainerIconDelete>
                   <img src={(doc.name === 'Image') ? Image : (doc.name === 'Text') ? Text : Table } alt={doc.name} />
                   <p>{doc.name} #{doc.id}</p>
                 </FileContent>
@@ -81,6 +97,13 @@ const DropdowmMenu = () => {
                 draggable
                 onDragStart={(e) => {startDrag(e,texto, 'Texto', texto.id)}}
                 >
+                  <ContainerIconDelete>
+                    <img 
+                      src={DeleteIcon} 
+                      alt="Icon delete"
+                      onClick={() => deleteItem(texto.id, 'Texto')}
+                    />
+                  </ContainerIconDelete>
                   <img src={Text} alt={texto.name} />
                   <p>{texto.name} #{texto.id}</p>
                 </FileContent>

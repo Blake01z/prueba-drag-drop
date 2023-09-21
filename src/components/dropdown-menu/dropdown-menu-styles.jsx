@@ -50,6 +50,7 @@ export const Drag = styled.div`
 `;
 
 export const FileContent = styled.div`
+    position: relative;
     align-items: center;
     background-color: #FFFFFF;
     display: flex;
@@ -65,5 +66,17 @@ export const FileContent = styled.div`
         padding: 0;
         font-size: 14px;
         color: #3A6B88;
+    }
+`;
+
+export const ContainerIconDelete = styled.div`
+    position: absolute;
+    right: -10px;
+    top: -7px;
+
+    img{
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
     }
 `;

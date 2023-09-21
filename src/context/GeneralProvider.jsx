@@ -36,7 +36,21 @@ const GeneralProvider = ({children}) => {
             identificador += caracteres.charAt(indiceAleatorio);
         }
         return identificador;
-      }
+    }
+
+    // Funcion para eliminar un elemento de un arreglo
+    const deleteItem = (id,category) => {
+        if(category === 'Images'){
+            const nuevosObjetos = images.filter(objeto => objeto.id !== id);
+            setImages(nuevosObjetos);
+        }else if(category === 'Any'){
+            const nuevosObjetos = any.filter(objeto => objeto.id !== id);
+            setAny(nuevosObjetos);
+        }else if(category === 'Texto'){
+            const nuevosObjetos = text.filter(objeto => objeto.id !== id);
+            setText(nuevosObjetos);
+        }
+    }
 
     // Funcion para obtener el elemento arrastrado del sidebar
     const onDropper = (e, area) => {
@@ -143,7 +157,8 @@ const GeneralProvider = ({children}) => {
                 text,
                 startDrag,
                 dragginOver,
-                onDropper
+                onDropper,
+                deleteItem
             }}
         >
             {children}
