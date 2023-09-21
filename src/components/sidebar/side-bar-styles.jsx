@@ -4,6 +4,8 @@ import styled from 'styled-components'
 export const SidebBar = styled.div`
     background-color: #FAFAFA;
     padding: 10px 0 30px 0;
+    position: sticky;
+    top:0;
     h1{
         color: #3A6B88;
         font-size: 18px;

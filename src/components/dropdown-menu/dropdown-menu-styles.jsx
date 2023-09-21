@@ -24,8 +24,6 @@ export const DragContainer = styled.div`
     margin-top: 20px;
     padding: 16px 10px;
     width: 90%;
-    /* overflow: auto;
-    max-height: 400px; */
     
     h3{
         color: #3A6B88;
