@@ -1,14 +1,19 @@
-import DropdowmMenu from './components/dropdown-menu/DropdowmMenu';
-import SideBar from './components/sidebar/SideBar';
+import { GeneralProvider } from './context/GeneralProvider';
 
 import { MainContent } from './App-styles';
 
+import DropdowmMenu from './components/dropdown-menu/DropdowmMenu';
+import SideBar from './components/sidebar/SideBar';
+
 function App() {
+
   return (
-   <MainContent>
-      <DropdowmMenu/>
-      <SideBar/>
-   </MainContent>
+    <GeneralProvider>
+      <MainContent>
+        <DropdowmMenu/>
+        <SideBar/>
+      </MainContent>
+    </GeneralProvider>
   );
 }
 

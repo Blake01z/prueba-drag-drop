@@ -4,21 +4,23 @@ import styled from 'styled-components'
 export const SidebBar = styled.div`
     background-color: #FAFAFA;
     padding: 10px 0 30px 0;
-
     h1{
         color: #3A6B88;
-        font-weight: 600;
         font-size: 18px;
+        font-weight: 600;
+        margin: 30px auto 10px auto;
         padding: 0;
-        margin: 30px auto;
         width: 90%;
     }
 
     @media (min-width: 992px){
-        height: 100vh;
         flex: 25%;
         padding: 0;
     }
+`;
+
+export const ContainerCabeceraSide = styled.div`
+   
 `;
 
 export const ContainerIcons = styled.div`
@@ -32,7 +34,7 @@ export const ContainerIcons = styled.div`
     }
 
     img{
-        width: 110px;
         cursor: pointer;
+        width: 110px;
     }
 `;
