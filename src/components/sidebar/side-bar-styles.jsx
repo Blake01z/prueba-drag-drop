@@ -20,7 +20,8 @@ export const SidebBar = styled.div`
 `;
 
 export const ContainerCabeceraSide = styled.div`
-   
+    position: sticky;
+    top:0;
 `;
 
 export const ContainerIcons = styled.div`

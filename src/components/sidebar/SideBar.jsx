@@ -40,7 +40,7 @@ const SideBar = () => {
                     alt={icon.name} 
                     key={index} 
                     draggable
-                    onDragStart={(e) => {startDrag(e,icon)}}
+                    onDragStart={(e) => {startDrag(e,icon,'Sidebar')}}
                     />
               ))
           }

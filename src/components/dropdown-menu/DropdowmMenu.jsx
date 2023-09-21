@@ -13,7 +13,7 @@ import { DropDownMain,
 
 const DropdowmMenu = () => {
 
-  const { images, any, text, dragginOver, onDropper } = useGeneral();
+  const { images, any, text, dragginOver, onDropper, startDrag } = useGeneral();
 
   return (
     <DropDownMain>
@@ -30,9 +30,13 @@ const DropdowmMenu = () => {
               </Drag>
             ) : (
               images.map((img) => (
-                <FileContent key={img.id}>
-                  <img src={Image} alt={img.type} />
-                  <p>{img.type} #{img.id}</p>
+                <FileContent 
+                  key={img.id}
+                  draggable
+                  onDragStart={(e) => {startDrag(e,img, 'Images', img.id)}}
+                >
+                  <img src={Image} alt={img.name} />
+                  <p>{img.name} #{img.id}</p>
                 </FileContent>
               ))
             )
@@ -50,9 +54,12 @@ const DropdowmMenu = () => {
               </Drag>
             ) : (
               any.map((doc) => (
-                <FileContent key={doc.id}>
-                  <img src={(doc.type === 'Image') ? Image : (doc.type === 'Text') ? Text : Table } alt={doc.type} />
-                  <p>{doc.type} #{doc.id}</p>
+                <FileContent key={doc.id}
+                  draggable
+                  onDragStart={(e) => {startDrag(e,doc, 'Any', doc.id)}}
+                >
+                  <img src={(doc.name === 'Image') ? Image : (doc.name === 'Text') ? Text : Table } alt={doc.name} />
+                  <p>{doc.name} #{doc.id}</p>
                 </FileContent>
               ))
             )
@@ -70,9 +77,12 @@ const DropdowmMenu = () => {
               </Drag>
             ) : (
               text.map((texto) => (
-                <FileContent key={texto.id}>
-                  <img src={Text} alt={texto.type} />
-                  <p>{texto.type} #{texto.id}</p>
+                <FileContent key={texto.id} 
+                draggable
+                onDragStart={(e) => {startDrag(e,texto, 'Texto', texto.id)}}
+                >
+                  <img src={Text} alt={texto.name} />
+                  <p>{texto.name} #{texto.id}</p>
                 </FileContent>
               ))
             )
